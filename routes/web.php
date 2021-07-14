@@ -3,7 +3,9 @@ use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductPhotoController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +22,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/product/{slug}', [HomeController::class, 'single'])->name('product.single');
 
+
+Route::prefix('checkout')->name('checkout.')->group(function(){
+    Route::get('/', [CheckoutController::class, 'index'])->name('index');
+
+});
+
+
+Route::prefix('cart')->name('cart.')->group(function(){
+    Route::post('add', [CartController::class, 'add'])->name('add');
+    Route::get('/', [CartController::class, 'index'])->name('index');
+    Route::get('remove/{slug}', [CartController::class, 'remove'])->name('remove');
+    Route::get('cancel', [CartController::class, 'cancel'])->name('cancel');
+
+
+
+});
 
 
 //Route Group only autenticaded
@@ -65,7 +83,6 @@ Route::group(['middleware' => ['auth']], function(){
 });
 
     
-
 
 
 
