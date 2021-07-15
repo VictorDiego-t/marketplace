@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Traits\UploadTrait;
-use \App\Models\Store;
-use \App\HTTP\Requests\ProductRequest;
+use App\Models\Store;
+use App\Http\Requests\ProductRequest;
 
 
 class ProductsController extends Controller
