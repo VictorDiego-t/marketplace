@@ -19,7 +19,7 @@ class CreateTableStore extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('phone');
-            $table->string('moblie_phone');
+            $table->string('mobile_phone');
             $table->string('slug');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
